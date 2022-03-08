@@ -4,11 +4,12 @@ import { ReportsEntity } from "./reports.entity";
 import { Repository } from "typeorm";
 import { ReportDto } from "./dto/report.dto";
 import { DentistsEntity } from "../dentists/dentists.entity";
+import { DentistsService } from "../dentists/dentists.service";
 
 @Injectable()
 export class ReportsService {
   constructor(@InjectRepository(ReportsEntity) private reportsRepository: Repository<ReportsEntity>,
-              private dentistsService: DentistsEntity) {}
+              private dentistsService: DentistsService) {}
 
   getAllReports():Promise<ReportsEntity[]> {
     return this.reportsRepository.find({relations: ['dentist']});
