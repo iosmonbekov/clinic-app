@@ -10,12 +10,12 @@ export class ReportsEntity {
   @Column()
   patientName: string;
 
-  @Column()
-  from: string;
+  @Column({type: "timestamp", })
+  from: Date;
 
-  @Column()
-  to: string;
+  @Column({type: "timestamp", })
+  to: Date;
 
   @ManyToOne(() => DentistsEntity, dentist => dentist.reports)
-  dentist: DentistsEntity
+  dentist: DentistsEntity;
 }
